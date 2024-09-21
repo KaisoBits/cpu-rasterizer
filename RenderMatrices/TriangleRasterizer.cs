@@ -1,5 +1,4 @@
 ﻿using SFML.Graphics;
-using SFML.System;
 
 namespace RenderMatrices;
 
@@ -46,19 +45,19 @@ public sealed class TriangleRasterizer : Drawable, IDisposable
 
         float triangleArea = Vector2.Cross(ca, ab);
 
-        float biasAB = IsTopLeft(ab) ? 0 : -1;
-        float biasBC = IsTopLeft(bc) ? 0 : -1;
-        float biasCA = IsTopLeft(ca) ? 0 : -1;
+        float biasAB = IsTopLeft(ab) ? 0 : -0.0001f;
+        float biasBC = IsTopLeft(bc) ? 0 : -0.0001f;
+        float biasCA = IsTopLeft(ca) ? 0 : -0.0001f;
 
         float minX = MathF.Min(MathF.Min(a.X, b.X), c.X);
         float minY = MathF.Min(MathF.Min(a.Y, b.Y), c.Y);
         float maxX = MathF.Max(MathF.Max(a.X, b.X), c.X);
         float maxY = MathF.Max(MathF.Max(a.Y, b.Y), c.Y);
 
-        for (uint y = (uint)MathF.Round(Math.Max(minY, 0)); y <= maxY && y < _image.Size.Y; y++)
+        for (uint y = (uint)MathF.Round(Math.Max(minY, 0)); y <= Math.Ceiling(maxY) && y < _image.Size.Y; y++)
         {
             bool inTriangle = false;
-            for (uint x = (uint)MathF.Round(Math.Max(minX, 0)); x <= maxX && y < _image.Size.X; x++)
+            for (uint x = (uint)MathF.Round(Math.Max(minX, 0)); x <= Math.Ceiling(maxX) && y < _image.Size.X; x++)
             {
                 Vector2 position = new(x, y);
 
