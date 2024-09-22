@@ -63,7 +63,7 @@ public sealed class TriangleRasterizer : Drawable, IDisposable
         for (uint y = (uint)MathF.Round(Math.Max(minY, 0)); y <= Math.Ceiling(maxY) && y < _image.Size.Y; y++)
         {
             bool inTriangle = false;
-            for (uint x = (uint)MathF.Round(Math.Max(minX, 0)); x <= Math.Ceiling(maxX) && y < _image.Size.X; x++)
+            for (uint x = (uint)MathF.Round(Math.Max(minX, 0)); x <= Math.Ceiling(maxX) && x < _image.Size.X; x++)
             {
                 Vector2 position = new(x, y);
 
