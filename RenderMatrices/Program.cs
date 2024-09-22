@@ -78,21 +78,25 @@ Clock clock = new();
 RenderWindow window = new(new VideoMode(800, 600), "CPU Rasterizer");
 
 window.Closed += (s, e) => window.Close();
-window.Resized += (s, e) => window.SetView(new View(new Vector2f(e.Width, e.Height) / 2.0f, new(e.Width, e.Height)));
+window.Resized += (s, e) => { 
+    window.SetView(new View(new Vector2f(e.Width, e.Height) / 2.0f, new(e.Width, e.Height)));
+    rasterizer.Resize(e.Width, e.Height);
+};
 
 Image texture = new("Resources/bricks.png");
 
 while (window.IsOpen)
 {
-    Matrix4 model = Matrix4.Transform(new(100, 100, 0)) * Matrix4.RotateX(clock.ElapsedTime.AsSeconds() / 4) * Matrix4.RotateY(clock.ElapsedTime.AsSeconds()) * Matrix4.Scale(new(5, 5, 5));
+    Matrix4 model = Matrix4.Transform(new(window.Size.X / 2, window.Size.Y / 2, 0)) * Matrix4.RotateX(clock.ElapsedTime.AsSeconds() / 4) * Matrix4.RotateY(clock.ElapsedTime.AsSeconds()) * Matrix4.Scale(new(5, 5, 5));
 
-    window.DispatchEvents();
     window.Clear();
 
     rasterizer.Clear(Color.Black);
     rasterizer.Rasterize(cube, in model, texture);
 
     window.Draw(rasterizer);
+
+    window.DispatchEvents();
 
     window.Display();
 

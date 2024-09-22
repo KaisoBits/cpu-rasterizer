@@ -1,21 +1,27 @@
-﻿using SFML.Graphics;
+﻿using System.Diagnostics.CodeAnalysis;
+using SFML.Graphics;
 
 namespace RenderMatrices;
 
 public sealed class TriangleRasterizer : Drawable, IDisposable
 {
-    private readonly Image _image;
-    private readonly Texture _texture;
-    private readonly Sprite _sprite;
+    private Image _image;
+    private Texture _texture;
+    private Sprite _sprite;
 
-    private readonly float[,] _zBuffer;
+    private float[,] _zBuffer;
 
     public TriangleRasterizer(uint width, uint height)
+    {
+        Resize(width, height);
+    }
+
+    [MemberNotNull(nameof(_image), nameof(_texture), nameof(_sprite), nameof(_zBuffer))]
+    public void Resize(uint width, uint height)
     {
         _image = new(width, height);
         _texture = new Texture(_image);
         _sprite = new Sprite(_texture);
-
         _zBuffer = new float[width, height];
     }
 
