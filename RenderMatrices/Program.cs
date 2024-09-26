@@ -71,6 +71,10 @@ cube.PushVertexTriangle(new VertexTriangle(
     new(new(-10, -10, 10), Color.Magenta, new(0, 1))
 ));
 
+float sensitivity = 0.01f;
+Vector2i? lastMousePos = null;
+Vector2f angle = new();
+
 TriangleRasterizer rasterizer = new(800, 600);
 
 Clock clock = new();
@@ -78,21 +82,53 @@ Clock clock = new();
 RenderWindow window = new(new VideoMode(800, 600), "CPU Rasterizer");
 
 window.Closed += (s, e) => window.Close();
-window.Resized += (s, e) => { 
+window.MouseMoved += (s, e) =>
+{
+    if (lastMousePos != null)
+    {
+        float xDiff = e.X - lastMousePos.Value.X;
+        float yDiff = e.Y - lastMousePos.Value.Y;
+
+        angle += new Vector2f(xDiff, -yDiff) * sensitivity;
+    }
+
+    lastMousePos = new Vector2i(e.X, e.Y);
+};
+
+window.Resized += (s, e) =>
+{
     window.SetView(new View(new Vector2f(e.Width, e.Height) / 2.0f, new(e.Width, e.Height)));
     rasterizer.Resize(e.Width, e.Height);
 };
+window.MouseLeft += (s, e) => lastMousePos = null;
 
 Image texture = new("Resources/bricks.png");
 
+List<Vector3> cubePositions = [];
+for (int x = 0; x < 3; x++)
+{
+    for (int y = 0; y < 3; y++)
+    {
+        for (int z = 0; z < 3; z++)
+        {
+            cubePositions.Add(new Vector3(x, y, z) * 150 - new Vector3(150, 150, 150));
+        }
+    }
+}
+
 while (window.IsOpen)
 {
-    Matrix4 model = Matrix4.Transform(new(window.Size.X / 2, window.Size.Y / 2, 0)) * Matrix4.RotateX(clock.ElapsedTime.AsSeconds() / 4) * Matrix4.RotateY(clock.ElapsedTime.AsSeconds()) * Matrix4.Scale(new(5, 5, 5));
+    Matrix4 cameraMatrix = Matrix4.Transform(new(window.Size.X / 2, window.Size.Y / 2, 200)) * Matrix4.RotateY(angle.X) * Matrix4.RotateX(angle.Y);
 
     window.Clear();
 
     rasterizer.Clear(Color.Black);
-    rasterizer.Rasterize(cube, in model, texture);
+
+    foreach (Vector3 cubePos in cubePositions)
+    {
+        Matrix4 model = Matrix4.Transform(cubePos) * Matrix4.Scale(new(5, 5, 5));
+        rasterizer.Rasterize(cube, cameraMatrix * model, texture);
+    }
 
     window.Draw(rasterizer);
 
