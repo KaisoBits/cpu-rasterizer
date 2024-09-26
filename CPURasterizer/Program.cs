@@ -71,9 +71,14 @@ cube.PushVertexTriangle(new VertexTriangle(
     new(new(-10, -10, 10), new Color(240, 240, 240), new(1, 0))
 ));
 
+const int gridSize = 3;
+const float gap = 150;
+
+float zoom = 1;
+float zoomSensitivity = 1.25f;
 float sensitivity = 0.01f;
 Vector2i? lastMousePos = null;
-Vector2f angle = new();
+Vector2f angle = new(0.8f, -0.5f);
 
 TriangleRasterizer rasterizer = new(800, 600);
 
@@ -102,23 +107,26 @@ window.Resized += (s, e) =>
 };
 window.MouseLeft += (s, e) => lastMousePos = null;
 
+window.MouseWheelScrolled += (s, e) =>
+{
+    float delta = e.Delta * zoomSensitivity;
+    if (delta < 0)
+        delta = -1f / delta;
+
+    zoom = Math.Clamp(zoom * delta, 0.01f, 5f);
+};
+
 Image texture = new("Resources/bricks.png");
 
 List<Vector3> cubePositions = [];
-for (int x = 0; x < 3; x++)
-{
-    for (int y = 0; y < 3; y++)
-    {
-        for (int z = 0; z < 3; z++)
-        {
-            cubePositions.Add(new Vector3(x, y, z) * 150 - new Vector3(150, 150, 150));
-        }
-    }
-}
+for (int x = 0; x < gridSize; x++)
+    for (int y = 0; y < gridSize; y++)
+        for (int z = 0; z < gridSize; z++)
+            cubePositions.Add(new Vector3(x, y, z) * gap - (new Vector3(gap, gap, gap) * ((gridSize - 1) / 2.0f)));
 
 while (window.IsOpen)
 {
-    Matrix4 cameraMatrix = Matrix4.Transform(new(window.Size.X / 2, window.Size.Y / 2, 200)) * Matrix4.RotateX(angle.Y) * Matrix4.RotateY(angle.X);
+    Matrix4 cameraMatrix = Matrix4.Transform(new(window.Size.X / 2, window.Size.Y / 2, 200)) * Matrix4.Scale(new(zoom, zoom, zoom)) * Matrix4.RotateX(angle.Y) * Matrix4.RotateY(angle.X);
 
     window.Clear();
 
