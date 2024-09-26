@@ -6,69 +6,69 @@ using SFML.Window;
 Mesh cube = new();
 // Front face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, -10), Color.White, new(1, 1)),
-    new(new(10, 10, -10), Color.White, new(0, 0)),
-    new(new(10, -10, -10), Color.White, new(1, 0))
+    new(new(-10, 10, -10), new Color(200, 200, 200), new(1, 1)),
+    new(new(10, 10, -10), new Color(200, 200, 200), new(0, 0)),
+    new(new(10, -10, -10), new Color(200, 200, 200), new(1, 0))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, -10), Color.White, new(0, 1)),
-    new(new(10, -10, -10), Color.White, new(0, 0)),
-    new(new(-10, -10, -10), Color.White, new(1, 1))
+    new(new(-10, 10, -10), new Color(200, 200, 200), new(0, 1)),
+    new(new(10, -10, -10), new Color(200, 200, 200), new(0, 0)),
+    new(new(-10, -10, -10), new Color(200, 200, 200), new(1, 1))
 ));
 // Back face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.White, new(1, 0)),
-    new(new(10, -10, 10), Color.White, new(0, 0)),
-    new(new(10, 10, 10), Color.White, new(1, 1))
+    new(new(-10, 10, 10), new Color(200, 200, 200), new(1, 0)),
+    new(new(10, -10, 10), new Color(200, 200, 200), new(0, 0)),
+    new(new(10, 10, 10), new Color(200, 200, 200), new(1, 1))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.White, new(1, 1)),
-    new(new(-10, -10, 10), Color.White, new(0, 0)),
-    new(new(10, -10, 10), Color.White, new(0, 1))
-));
-// Right face
-cube.PushVertexTriangle(new VertexTriangle(
-    new(new(10, 10, -10), Color.White, new(0, 1)),
-    new(new(10, 10, 10), Color.White, new(1, 0)),
-    new(new(10, -10, 10), Color.White, new(0, 0))
-));
-cube.PushVertexTriangle(new VertexTriangle(
-    new(new(10, 10, -10), Color.White, new(1, 1)),
-    new(new(10, -10, 10), Color.White, new(1, 0)),
-    new(new(10, -10, -10), Color.White, new(0, 1))
+    new(new(-10, 10, 10), new Color(200, 200, 200), new(1, 1)),
+    new(new(-10, -10, 10), new Color(200, 200, 200), new(0, 0)),
+    new(new(10, -10, 10), new Color(200, 200, 200), new(0, 1))
 ));
 // Left face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.White, new(0, 1)),
-    new(new(-10, 10, -10), Color.White, new(1, 0)),
-    new(new(-10, -10, -10), Color.White, new(0, 0))
+    new(new(10, 10, -10), new Color(170, 170, 170), new(0, 1)),
+    new(new(10, 10, 10), new Color(170, 170, 170), new(1, 0)),
+    new(new(10, -10, 10), new Color(170, 170, 170), new(0, 0))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.White, new(1, 1)),
-    new(new(-10, -10, -10), Color.White, new(1, 0)),
-    new(new(-10, -10, 10), Color.White, new(0, 1))
+    new(new(10, 10, -10), new Color(170, 170, 170), new(1, 1)),
+    new(new(10, -10, 10), new Color(170, 170, 170), new(1, 0)),
+    new(new(10, -10, -10), new Color(170, 170, 170), new(0, 1))
 ));
-// Top face
+// Right face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.White, new(1, 0)),
-    new(new(10, 10, 10), Color.White, new(0, 1)),
-    new(new(10, 10, -10), Color.White, new(1, 1))
+    new(new(-10, 10, 10), new Color(170, 170, 170), new(0, 1)),
+    new(new(-10, 10, -10), new Color(170, 170, 170), new(1, 0)),
+    new(new(-10, -10, -10), new Color(170, 170, 170), new(0, 0))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.White, new(0, 0)),
-    new(new(10, 10, -10), Color.White, new(0, 1)),
-    new(new(-10, 10, -10), Color.White, new(1, 0))
+    new(new(-10, 10, 10), new Color(170, 170, 170), new(1, 1)),
+    new(new(-10, -10, -10), new Color(170, 170, 170), new(1, 0)),
+    new(new(-10, -10, 10), new Color(170, 170, 170), new(0, 1))
 ));
 // Bottom face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, -10, -10), Color.White, new(1, 0)),
-    new(new(10, -10, -10), Color.White, new(0, 1)),
-    new(new(10, -10, 10), Color.White, new(1, 1))
+    new(new(-10, 10, 10), new Color(120, 120, 120), new(1, 0)),
+    new(new(10, 10, 10), new Color(120, 120, 120), new(0, 1)),
+    new(new(10, 10, -10), new Color(120, 120, 120), new(1, 1))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, -10, -10), Color.White, new(0, 0)),
-    new(new(10, -10, 10), Color.White, new(0, 1)),
-    new(new(-10, -10, 10), Color.White, new(1, 0))
+    new(new(-10, 10, 10), new Color(120, 120, 120), new(0, 0)),
+    new(new(10, 10, -10), new Color(120, 120, 120), new(0, 1)),
+    new(new(-10, 10, -10), new Color(120, 120, 120), new(1, 0))
+));
+// Top face
+cube.PushVertexTriangle(new VertexTriangle(
+    new(new(-10, -10, -10), new Color(240, 240, 240), new(1, 0)),
+    new(new(10, -10, -10), new Color(240, 240, 240), new(0, 1)),
+    new(new(10, -10, 10), new Color(240, 240, 240), new(1, 1))
+));
+cube.PushVertexTriangle(new VertexTriangle(
+    new(new(-10, -10, -10), new Color(240, 240, 240), new(0, 0)),
+    new(new(10, -10, 10), new Color(240, 240, 240), new(0, 1)),
+    new(new(-10, -10, 10), new Color(240, 240, 240), new(1, 0))
 ));
 
 float sensitivity = 0.01f;
