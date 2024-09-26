@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderMatrices", "RenderMatrices\RenderMatrices.csproj", "{5C4809CF-E2D3-445C-A9A4-B7184C243212}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPURasterizer", "CPURasterizer\CPURasterizer.csproj", "{5C4809CF-E2D3-445C-A9A4-B7184C243212}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
