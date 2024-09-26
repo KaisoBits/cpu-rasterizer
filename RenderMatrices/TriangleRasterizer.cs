@@ -77,6 +77,14 @@ public sealed class TriangleRasterizer : Drawable, IDisposable
 
                 if (w0 >= 0 && w1 >= 0 && w2 >= 0)
                 {
+                    float z = w0 * a.Z + w1 * b.Z + w2 * c.Z;
+                    if (_zBuffer[x, y] <= z)
+                    {
+                        continue;
+                    }
+
+                    _zBuffer[x, y] = z;
+
                     Vector2 finalUV = aUV * w0Bias + bUV * w1Bias + cUV * w2Bias;
 
                     Color textureColor = objectTexture.GetPixel((uint)(finalUV.X * objectTexture.Size.X), (uint)(finalUV.Y * objectTexture.Size.Y));
@@ -102,7 +110,7 @@ public sealed class TriangleRasterizer : Drawable, IDisposable
             for (uint x = 0; x < _image.Size.X; x++)
             {
                 _image.SetPixel(x, y, color);
-                _zBuffer[x, y] = 0;
+                _zBuffer[x, y] = float.MaxValue;
             }
         }
     }
