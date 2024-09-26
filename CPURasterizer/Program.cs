@@ -6,69 +6,69 @@ using SFML.Window;
 Mesh cube = new();
 // Front face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, -10), Color.White, new(0, 0)),
-    new(new(10, 10, -10), Color.White, new(1, 0)),
-    new(new(10, -10, -10), Color.White, new(1, 1))
+    new(new(-10, 10, -10), Color.White, new(1, 1)),
+    new(new(10, 10, -10), Color.White, new(0, 0)),
+    new(new(10, -10, -10), Color.White, new(1, 0))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, -10), Color.White, new(0, 0)),
-    new(new(10, -10, -10), Color.White, new(1, 1)),
-    new(new(-10, -10, -10), Color.White, new(0, 1))
+    new(new(-10, 10, -10), Color.White, new(0, 1)),
+    new(new(10, -10, -10), Color.White, new(0, 0)),
+    new(new(-10, -10, -10), Color.White, new(1, 1))
 ));
 // Back face
 cube.PushVertexTriangle(new VertexTriangle(
     new(new(-10, 10, 10), Color.White, new(1, 0)),
-    new(new(10, -10, 10), Color.White, new(0, 1)),
-    new(new(10, 10, 10), Color.White, new(0, 0))
+    new(new(10, -10, 10), Color.White, new(0, 0)),
+    new(new(10, 10, 10), Color.White, new(1, 1))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.White, new(1, 0)),
-    new(new(-10, -10, 10), Color.White, new(1, 1)),
+    new(new(-10, 10, 10), Color.White, new(1, 1)),
+    new(new(-10, -10, 10), Color.White, new(0, 0)),
     new(new(10, -10, 10), Color.White, new(0, 1))
 ));
 // Right face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(10, 10, -10), Color.Yellow, new(0, 0)),
-    new(new(10, 10, 10), Color.Red, new(1, 0)),
-    new(new(10, -10, 10), Color.Magenta, new(1, 1))
+    new(new(10, 10, -10), Color.White, new(0, 1)),
+    new(new(10, 10, 10), Color.White, new(1, 0)),
+    new(new(10, -10, 10), Color.White, new(0, 0))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(10, 10, -10), Color.Yellow, new(0, 0)),
-    new(new(10, -10, 10), Color.Red, new(1, 1)),
-    new(new(10, -10, -10), Color.Magenta, new(0, 1))
+    new(new(10, 10, -10), Color.White, new(1, 1)),
+    new(new(10, -10, 10), Color.White, new(1, 0)),
+    new(new(10, -10, -10), Color.White, new(0, 1))
 ));
 // Left face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.Yellow, new(0, 0)),
-    new(new(-10, 10, -10), Color.Red, new(1, 0)),
-    new(new(-10, -10, -10), Color.Magenta, new(1, 1))
+    new(new(-10, 10, 10), Color.White, new(0, 1)),
+    new(new(-10, 10, -10), Color.White, new(1, 0)),
+    new(new(-10, -10, -10), Color.White, new(0, 0))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.Yellow, new(0, 0)),
-    new(new(-10, -10, -10), Color.Red, new(1, 1)),
-    new(new(-10, -10, 10), Color.Magenta, new(0, 1))
+    new(new(-10, 10, 10), Color.White, new(1, 1)),
+    new(new(-10, -10, -10), Color.White, new(1, 0)),
+    new(new(-10, -10, 10), Color.White, new(0, 1))
 ));
 // Top face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.Yellow, new(0, 0)),
-    new(new(10, 10, 10), Color.Red, new(1, 0)),
-    new(new(10, 10, -10), Color.Magenta, new(1, 1))
+    new(new(-10, 10, 10), Color.White, new(1, 0)),
+    new(new(10, 10, 10), Color.White, new(0, 1)),
+    new(new(10, 10, -10), Color.White, new(1, 1))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, 10, 10), Color.Yellow, new(0, 0)),
-    new(new(10, 10, -10), Color.Red, new(1, 1)),
-    new(new(-10, 10, -10), Color.Magenta, new(0, 1))
+    new(new(-10, 10, 10), Color.White, new(0, 0)),
+    new(new(10, 10, -10), Color.White, new(0, 1)),
+    new(new(-10, 10, -10), Color.White, new(1, 0))
 ));
 // Bottom face
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, -10, -10), Color.Yellow, new(0, 0)),
-    new(new(10, -10, -10), Color.Red, new(1, 0)),
-    new(new(10, -10, 10), Color.Magenta, new(1, 1))
+    new(new(-10, -10, -10), Color.White, new(1, 0)),
+    new(new(10, -10, -10), Color.White, new(0, 1)),
+    new(new(10, -10, 10), Color.White, new(1, 1))
 ));
 cube.PushVertexTriangle(new VertexTriangle(
-    new(new(-10, -10, -10), Color.Yellow, new(0, 0)),
-    new(new(10, -10, 10), Color.Red, new(1, 1)),
-    new(new(-10, -10, 10), Color.Magenta, new(0, 1))
+    new(new(-10, -10, -10), Color.White, new(0, 0)),
+    new(new(10, -10, 10), Color.White, new(0, 1)),
+    new(new(-10, -10, 10), Color.White, new(1, 0))
 ));
 
 float sensitivity = 0.01f;

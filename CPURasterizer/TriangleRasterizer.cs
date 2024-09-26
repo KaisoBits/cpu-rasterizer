@@ -85,7 +85,7 @@ public sealed class TriangleRasterizer : Drawable, IDisposable
 
                     Vector2 finalUV = aUV * w0Bias + bUV * w1Bias + cUV * w2Bias;
 
-                    Color textureColor = objectTexture.GetPixel((uint)(finalUV.X * objectTexture.Size.X), (uint)(finalUV.Y * objectTexture.Size.Y));
+                    Color textureColor = objectTexture.GetPixel((uint)(finalUV.X * objectTexture.Size.X), (uint)(objectTexture.Size.Y - (finalUV.Y * objectTexture.Size.Y)));
 
                     _image.SetPixel(x, y, new Color(
                         (byte)(((aColor.R * w0Bias + bColor.R * w1Bias + cColor.R * w2Bias) / 255.0f) * textureColor.R),
