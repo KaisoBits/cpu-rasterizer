@@ -60,10 +60,14 @@ public sealed class TriangleRasterizer : Drawable, IDisposable
         float maxX = MathF.Max(MathF.Max(a.X, b.X), c.X);
         float maxY = MathF.Max(MathF.Max(a.Y, b.Y), c.Y);
 
-        for (uint y = (uint)MathF.Round(Math.Max(minY, 0)); y <= Math.Ceiling(maxY) && y < _image.Size.Y; y++)
+        for (uint y = (uint)MathF.Round(Math.Max(minY, 0));
+            y <= Math.Ceiling(maxY) && y < _image.Size.Y;
+            y++)
         {
             bool inTriangle = false;
-            for (uint x = (uint)MathF.Round(Math.Max(minX, 0)); x <= Math.Ceiling(maxX) && x < _image.Size.X; x++)
+            for (uint x = (uint)MathF.Round(Math.Max(minX, 0));
+                x <= Math.Ceiling(maxX) && x < _image.Size.X;
+                x++)
             {
                 Vector2 position = new(x, y);
 
@@ -85,7 +89,9 @@ public sealed class TriangleRasterizer : Drawable, IDisposable
 
                     Vector2 finalUV = aUV * w0Bias + bUV * w1Bias + cUV * w2Bias;
 
-                    Color textureColor = objectTexture.GetPixel((uint)(finalUV.X * objectTexture.Size.X), (uint)(objectTexture.Size.Y - (finalUV.Y * objectTexture.Size.Y)));
+                    Color textureColor = objectTexture.GetPixel(
+                        (uint)(finalUV.X * objectTexture.Size.X),
+                        (uint)(objectTexture.Size.Y - (finalUV.Y * objectTexture.Size.Y)));
 
                     _image.SetPixel(x, y, new Color(
                         (byte)(((aColor.R * w0Bias + bColor.R * w1Bias + cColor.R * w2Bias) / 255.0f) * textureColor.R),
