@@ -118,7 +118,7 @@ for (int x = 0; x < 3; x++)
 
 while (window.IsOpen)
 {
-    Matrix4 cameraMatrix = Matrix4.Transform(new(window.Size.X / 2, window.Size.Y / 2, 200)) * Matrix4.RotateY(angle.X) * Matrix4.RotateX(angle.Y);
+    Matrix4 cameraMatrix = Matrix4.Transform(new(window.Size.X / 2, window.Size.Y / 2, 200)) * Matrix4.RotateX(angle.Y) * Matrix4.RotateY(angle.X);
 
     window.Clear();
 
