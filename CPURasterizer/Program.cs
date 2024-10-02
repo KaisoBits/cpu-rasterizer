@@ -130,7 +130,7 @@ while (window.IsOpen)
 
     window.Clear();
 
-    rasterizer.Clear(Color.Black);
+    rasterizer.Clear(new Color(207, 236, 247));
 
     foreach (Vector3 cubePos in cubePositions)
     {
